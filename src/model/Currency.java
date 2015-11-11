@@ -1,3 +1,5 @@
+package model;
+
 public class Currency {
     private final String code;
     private final String name;

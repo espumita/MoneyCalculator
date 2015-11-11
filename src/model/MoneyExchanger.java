@@ -1,3 +1,7 @@
+package model;
+
+import model.Money;
+
 public class MoneyExchanger {
 
     public static Money exchange(Money money, ExchangeRate exchangeRate) {
