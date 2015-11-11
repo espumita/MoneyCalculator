@@ -1,7 +1,8 @@
 package control;
 
 import model.*;
-import view.CurrencyExchangeLoader;
+import view.CurrencyExchangeReader;
+import view.CurrencyExchangeRateLoader;
 import view.CurrencySetLoader;
 
 import java.io.IOException;
@@ -9,8 +10,10 @@ import java.io.IOException;
 public class MoneyCalculator {
     public static void main(String[] args) throws IOException {
         CurrencySet currencySet = new CurrencySetLoader().load();
-        Exchange exchange = new CurrencyExchangeLoader().execute();
-        ExchangeRate exchangeRate = new ExchangeRate(exchange.getMoney().getCurrency(),exchange.getCurrency(),1.2); //Esto debe de venir de la db
-        new MoneyExchanger().exchange(new Money(exchange.getMoney().getCurrency(), exchange.getMoney().getAmount()),exchangeRate);
+        //Se los muestro al usuario
+        Exchange exchange = new CurrencyExchangeReader().read();
+        ExchangeRate exchangeRate = new CurrencyExchangeRateLoader().load(exchange);
+        Money money = new MoneyExchanger().exchange(new Money(exchange.getMoney().getCurrency(), exchange.getMoney().getAmount()), exchangeRate);
+        //Se lo muestro al usuario
     }
 }
