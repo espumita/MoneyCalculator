@@ -1,4 +1,4 @@
-package view;
+package persistance;
 
 import model.Exchange;
 import model.ExchangeRate;

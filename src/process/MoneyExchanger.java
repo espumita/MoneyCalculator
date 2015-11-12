@@ -1,5 +1,6 @@
-package model;
+package process;
 
+import model.ExchangeRate;
 import model.Money;
 
 public class MoneyExchanger {
