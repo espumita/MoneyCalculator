@@ -1,10 +1,10 @@
 package control;
 
 import model.*;
-import process.MoneyExchanger;
-import persistance.CurrencyExchangeRateLoader;
-import ui.ExchangeDialog;
-import ui.MoneyDisplay;
+import model.MoneyExchanger;
+import view.persistance.CurrencyExchangeRateLoader;
+import view.UI.ExchangeDialog;
+import view.UI.MoneyDisplay;
 
 import java.io.IOException;
 

@@ -1,4 +1,4 @@
-package ui;
+package view.UI;
 
 import model.Currency;
 import model.CurrencySet;

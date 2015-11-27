@@ -2,7 +2,7 @@ package aplication;
 
 import control.ExchangeOperation;
 import model.*;
-import persistance.CurrencySetLoader;
+import view.persistance.CurrencySetLoader;
 
 import java.io.IOException;
 
@@ -12,3 +12,4 @@ public class MoneyCalculatorApp {
         new ExchangeOperation().execute(currencySet);
     }
 }
+
