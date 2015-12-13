@@ -1,6 +1,5 @@
 package model;
 
-import model.Currency;
 
 public class ExchangeRate {
     private final Currency from;
