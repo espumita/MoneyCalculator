@@ -10,12 +10,12 @@ public class CurrencySet {
         this.currencyMap = new HashMap<>();
     }
 
-    public Map<String, Currency> getCurrencyMap() {
+    public Map<String, Currency> currencyMap() {
         return currencyMap;
     }
 
     public void add(Currency currency){
-        currencyMap.put(currency.getCode(),currency);
+        currencyMap.put(currency.code(),currency);
     }
 
     @Override

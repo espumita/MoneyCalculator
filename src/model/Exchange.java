@@ -1,7 +1,5 @@
 package model;
 
-import model.Money;
-
 public class Exchange {
     private final Money money;
     private final Currency currency;
@@ -11,11 +9,11 @@ public class Exchange {
         this.currency = currency;
     }
 
-    public Money getMoney() {
+    public Money money() {
         return money;
     }
 
-    public Currency getCurrency() {
+    public Currency currency() {
         return currency;
     }
 }

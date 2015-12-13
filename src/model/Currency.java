@@ -11,15 +11,15 @@ public class Currency {
         this.symbol = symbol;
     }
 
-    public String getCode() {
+    public String code() {
         return code;
     }
 
-    public String getName() {
+    public String name() {
         return name;
     }
 
-    public String getSymbol() {
+    public String symbol() {
         return symbol;
     }
 

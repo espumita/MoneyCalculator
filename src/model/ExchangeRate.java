@@ -12,15 +12,15 @@ public class ExchangeRate {
         this.rate = rate;
     }
 
-    public Currency getFrom() {
+    public Currency from() {
         return from;
     }
 
-    public Currency getTo() {
+    public Currency to() {
         return to;
     }
 
-    public double getRate() {
+    public double rate() {
         return rate;
     }
 }

@@ -2,6 +2,8 @@ package application;
 
 import control.CalculateMoneyCommand;
 import control.Command;
+import model.Currency;
+import model.CurrencySet;
 
 import javax.swing.*;
 import java.awt.*;
@@ -11,12 +13,15 @@ import java.util.Map;
 
 public class Application extends JFrame {
     private Map<String, Command> commands = new HashMap<>();
+    private static Map<String, JComponent> components = new HashMap<>();
+    private static CurrencySet currencySet;
 
     public static void main(String[] args) throws IOException {
         new Application().setVisible(true);
     }
 
-    public Application() throws HeadlessException {
+    public Application() throws HeadlessException, IOException {
+        currencySet = new FileReader().load();
         deployUI();
         addCommands();
     }
@@ -43,7 +48,7 @@ public class Application extends JFrame {
         panel.add(exchangeToCombo());
         panel.add(exchangeButton());
         panel.add(resultLabel());
-        panel.add(resultField());
+        panel.add(resultTextField());
         return panel;
     }
 
@@ -53,9 +58,10 @@ public class Application extends JFrame {
         return button;
     }
 
-    private JTextField resultField() {
+    private JTextField resultTextField() {
         JTextField text = new JTextField();
         text.setPreferredSize(new Dimension(140,24));
+        components.put("ResultTextField",text);
         return text;
     }
 
@@ -67,11 +73,14 @@ public class Application extends JFrame {
     private JTextField originalMoneyTextField() {
         JTextField text = new JTextField();
         text.setPreferredSize(new Dimension(140,24));
+        components.put("OriginalMoneyTextField",text);
         return text;
     }
 
     private JComboBox exchangeToCombo() {
         JComboBox combo = new JComboBox();
+        components.put("ExchangeToCombo",combo);
+        currencySet.currencyMap().keySet().forEach(combo::addItem);
         return combo;
     }
 
@@ -87,12 +96,22 @@ public class Application extends JFrame {
 
     private JComboBox originalCombo() {
         JComboBox combo = new JComboBox();
+        components.put("OriginalCombo",combo);
+        currencySet.currencyMap().keySet().forEach(combo::addItem);
         return combo;
     }
 
     private JLabel originalLabel() {
         JLabel label = new JLabel("Original: ");
         return label;
+    }
+
+    public static Map<String, JComponent> components(){
+        return components;
+    }
+
+    public static CurrencySet currencySet(){
+        return currencySet;
     }
 }
 
