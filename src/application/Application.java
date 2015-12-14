@@ -59,7 +59,7 @@ public class Application extends JFrame {
 
     private JTextField resultTextField() {
         JTextField text = new JTextField();
-        text.setPreferredSize(new Dimension(140,24));
+        text.setPreferredSize(new Dimension(160,24));
         components.put("ResultTextField",text);
         return text;
     }
@@ -71,7 +71,7 @@ public class Application extends JFrame {
 
     private JTextField originalMoneyTextField() {
         JTextField text = new JTextField();
-        text.setPreferredSize(new Dimension(140,24));
+        text.setPreferredSize(new Dimension(160,24));
         components.put("OriginalMoneyTextField",text);
         return text;
     }
@@ -84,6 +84,7 @@ public class Application extends JFrame {
                 stream().
                 filter(code -> !((JComboBox)components.get("OriginalCombo")).getSelectedItem().toString().equals(code)).
                 forEach(combo::addItem);
+        combo.addActionListener(e -> ((JTextField) components.get("ResultTextField")).setText(""));
         return combo;
     }
 
@@ -110,6 +111,7 @@ public class Application extends JFrame {
                     stream().
                     filter(code -> !combo.getSelectedItem().toString().equals(code)).
                     forEach(((JComboBox)components.get("ExchangeToCombo"))::addItem);
+            ((JTextField) components.get("ResultTextField")).setText("");
         });
         return combo;
     }

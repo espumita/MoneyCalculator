@@ -19,6 +19,7 @@ public class CurrencySetFileReader implements CurrencySetLoader{
             String[] fields = line.split(",");
             currencySet.add(new Currency(fields[0],fields[1],fields[2]));
         }
+        reader.close();
         return currencySet;
     }
 }
