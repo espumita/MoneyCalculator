@@ -2,7 +2,6 @@ package application;
 
 import control.CalculateMoneyCommand;
 import control.Command;
-import model.Currency;
 import model.CurrencySet;
 
 import javax.swing.*;
@@ -21,7 +20,7 @@ public class Application extends JFrame {
     }
 
     public Application() throws HeadlessException, IOException {
-        currencySet = new FileReader().load();
+        currencySet = new CurrencySetFileReader().load();
         deployUI();
         addCommands();
     }
@@ -80,7 +79,11 @@ public class Application extends JFrame {
     private JComboBox exchangeToCombo() {
         JComboBox combo = new JComboBox();
         components.put("ExchangeToCombo",combo);
-        currencySet.currencyMap().keySet().forEach(combo::addItem);
+        currencySet.currencyMap().
+                keySet().
+                stream().
+                filter(code -> !((JComboBox)components.get("OriginalCombo")).getSelectedItem().toString().equals(code)).
+                forEach(combo::addItem);
         return combo;
     }
 
@@ -97,7 +100,17 @@ public class Application extends JFrame {
     private JComboBox originalCombo() {
         JComboBox combo = new JComboBox();
         components.put("OriginalCombo",combo);
-        currencySet.currencyMap().keySet().forEach(combo::addItem);
+        currencySet.currencyMap().
+                keySet().
+                forEach(combo::addItem);
+        combo.addActionListener(e -> {
+            ((JComboBox)components.get("ExchangeToCombo")).removeAllItems();
+            currencySet.currencyMap().
+                    keySet().
+                    stream().
+                    filter(code -> !combo.getSelectedItem().toString().equals(code)).
+                    forEach(((JComboBox)components.get("ExchangeToCombo"))::addItem);
+        });
         return combo;
     }
 

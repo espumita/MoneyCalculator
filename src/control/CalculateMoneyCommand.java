@@ -1,17 +1,16 @@
 package control;
 
 
-import application.CurrentSelectedExchange;
+import application.UserSelectedExchange;
+import application.ExchangeRateSomeSourceReader;
+import application.MoneyResultField;
 import model.Exchange;
 
 public class CalculateMoneyCommand implements Command {
-    private Exchange exchange;
-    public CalculateMoneyCommand() {
-        this.exchange = new CurrentSelectedExchange().load();
-    }
 
     @Override
     public void execute() {
-
+        Exchange exchange = new UserSelectedExchange().load();
+        new MoneyResultField(exchange,new ExchangeRateSomeSourceReader(exchange).load()).show();
     }
 }

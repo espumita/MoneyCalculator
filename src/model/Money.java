@@ -16,4 +16,9 @@ public class Money {
     public double amount() {
         return amount;
     }
+
+    @Override
+    public String toString() {
+        return String.valueOf(amount)+" "+currency.symbol();
+    }
 }

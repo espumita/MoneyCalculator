@@ -9,11 +9,11 @@ public class Exchange {
         this.currency = currency;
     }
 
-    public Money money() {
+    public Money moneyFrom() {
         return money;
     }
 
-    public Currency currency() {
+    public Currency currencyTo() {
         return currency;
     }
 }

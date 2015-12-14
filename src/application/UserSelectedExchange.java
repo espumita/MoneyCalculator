@@ -10,7 +10,7 @@ import javax.swing.*;
 import static application.Application.components;
 import static application.Application.currencySet;
 
-public class CurrentSelectedExchange implements ExchangeRateLoader {
+public class UserSelectedExchange implements ExchangeRateLoader {
     @Override
     public Exchange load() {
         return new Exchange(new Money(currencyFrom(), amount()), currencyTo());

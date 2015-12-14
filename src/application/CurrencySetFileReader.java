@@ -8,7 +8,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
 
-public class FileReader implements CurrencySetLoader{
+public class CurrencySetFileReader implements CurrencySetLoader{
     @Override
     public CurrencySet load() throws IOException {
         CurrencySet currencySet = new CurrencySet();
