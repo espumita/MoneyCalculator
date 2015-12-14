@@ -15,6 +15,10 @@ public class Currency {
         return code;
     }
 
+    public String name(){
+        return name;
+    }
+
     public String symbol() {
         return symbol;
     }
